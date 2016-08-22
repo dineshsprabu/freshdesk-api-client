@@ -2,7 +2,7 @@
 
 Freshdesk API client for accessing Users, Agents, Tickets, Discussions, Solutions using API v1.0.
 
-#View the gem at (rubygems.org)[https://rubygems.org/gems/freshdesk-api-client]
+View the gem at (rubygems.org)[https://rubygems.org/gems/freshdesk-api-client]
 
 ## Installation
 
@@ -32,7 +32,7 @@ ticket.create_ticket({ helpdesk_ticket: { description: "Details about the issue"
 
 ```
 
-#Check the (documentation)[http://www.rubydoc.info/gems/freshdesk-api-client/0.0.2] here, for all the functionalities.
+Check the (documentation)[http://www.rubydoc.info/gems/freshdesk-api-client/0.0.2] here, for all the functionalities.
 
 ## Contributing
 
