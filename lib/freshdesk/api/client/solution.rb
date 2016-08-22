@@ -1,18 +1,6 @@
 module Freshdesk
 	module Api
 		module Client
-			def self.convert_to_hash response
-				JSON.parse response.to_str
-			end
-
-			def self.delete_status_wrapper
-				response = yield if block_given?
-				if !response.nil? and (response >= 200 and response < 299)
-					true
-				else
-					false
-				end
-			end
 
 			class Solution
 
@@ -61,14 +49,18 @@ module Freshdesk
 				end
 
 				def delete_category id
-					( @connection.delete CATEGORIES, id, "delete_category" ).code
+					Freshdesk::Api::Client.delete_status_wrapper do
+						( @connection.delete CATEGORIES, id, "delete_category" ).code
+					end
 				end
 
 				def delete_folder category_id, id
-					( @connection.delete FOLDERS, category_id, id, "delete_folder" ).code
+					Freshdesk::Api::Client.delete_status_wrapper do
+						( @connection.delete FOLDERS, category_id, id, "delete_folder" ).code
+					end
 				end
 
-			end #end of Solution
+			end 
 
 		end
 	end

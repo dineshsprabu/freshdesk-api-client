@@ -1,21 +1,7 @@
 module Freshdesk
 	module Api
 		module Client
-			def self.convert_to_hash response
-				JSON.parse response.to_str
-			end
-
-			def self.delete_status_wrapper
-				response = yield if block_given?
-				if !response.nil? and (response >= 200 and response < 299)
-					true
-				else
-					false
-				end
-			end
-
 			class User
-
 				USERS = "contacts".freeze 
 				AGENTS = "agents".freeze
 
@@ -62,7 +48,9 @@ module Freshdesk
 				end
 
 				def delete_user id
-					( @connection.delete USERS, id ).code
+					Freshdesk::Api::Client.delete_status_wrapper do
+						( @connection.delete USERS, id ).code
+					end
 				end
 
 				def delete_agent id
@@ -81,7 +69,7 @@ module Freshdesk
 					Freshdesk::Api::Client.convert_to_hash( @connection.get AGENTS )
 				end
 
-			end #end of User
+			end
 		end
 	end
 end

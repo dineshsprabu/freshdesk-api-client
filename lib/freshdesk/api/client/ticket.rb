@@ -1,21 +1,7 @@
 module Freshdesk
 	module Api
 		module Client
-			def self.convert_to_hash response
-				JSON.parse response.to_str
-			end
-
-			def self.delete_status_wrapper
-				response = yield if block_given?
-				if !response.nil? and (response >= 200 and response < 299)
-					true
-				else
-					false
-				end
-			end
-
 			class Ticket
-
 				TICKETS = "tickets".freeze
 				NOTES = "conversations/note".freeze
 
@@ -32,7 +18,9 @@ module Freshdesk
 				end
 
 				def delete_ticket id
-					( @connection.delete TICKETS, id ).code
+					Freshdesk::Api::Client.delete_status_wrapper do
+						( @connection.delete TICKETS, id ).code
+					end
 				end
 
 				def get_ticket id
@@ -61,7 +49,7 @@ module Freshdesk
 					end
 				end
 
-			end #end of Ticket
+			end 
 		end
 	end
 end

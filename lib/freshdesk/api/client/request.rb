@@ -2,7 +2,7 @@ require 'rest-client'
 
 module Freshdesk
 	module Api
-		module Client
+		module Client			
 			class Request
 
 				def initialize base_url, api_key
