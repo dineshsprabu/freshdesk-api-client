@@ -1,2 +1,1 @@
-# freshdesk-api-client
-Freshdesk API Client
+#Freshdesk API Client
