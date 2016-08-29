@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "freshdesk-api-client"
-  spec.version       = "0.0.5"
+  spec.version       = "1.0.0"
   spec.authors       = ["Dineshprabu S"]
   spec.email         = "dineshsprabu@gmail.com"
   spec.summary       = %q{Freshdesk API client for v1.}
@@ -11,5 +11,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib","lib/freshdesk/api/client"]
   spec.license       = 'MIT'
   spec.files         = ["lib/freshdesk-api-client.rb"]+Dir["lib/freshdesk/api/client/*.rb"]
-  spec.add_runtime_dependency 'rest-client', "~> 0"
+  spec.add_runtime_dependency 'rest-client', "1.6.7"
 end
