@@ -12,6 +12,7 @@ module Freshdesk
 
 				def get endpoint, id=nil, filters=nil, secondary_id=nil, method=nil
 					url = create_url endpoint, id, filters, secondary_id, method
+					p "GET #{url}"
 					handle_exceptions do
 						RestClient::Request.execute( url: url, method: :get, headers: @auth )
 					end
@@ -19,6 +20,7 @@ module Freshdesk
 
 				def post endpoint, payload, primary_id=nil, secondary_id=nil, method=nil
 					url = create_url endpoint, primary_id, nil, secondary_id, method
+					p "POST #{url}"
 					handle_exceptions do
 						RestClient::Request.execute( 
 							payload: payload.to_json,
@@ -31,6 +33,7 @@ module Freshdesk
 
 				def put endpoint, id, payload
 					url = create_url endpoint, id
+					p "PUT #{url}"
 					handle_exceptions do
 						RestClient::Request.execute( 
 							payload: payload.to_json,
@@ -43,7 +46,7 @@ module Freshdesk
 
 				def delete endpoint, primary_id, secondary_id=nil, method=nil
 					url = create_url endpoint, primary_id, nil, secondary_id, method
-					p url
+					p "DELETE #{url}"
 					handle_exceptions do
 						RestClient::Request.execute( url: url, method: :delete, headers: @auth )
 					end
